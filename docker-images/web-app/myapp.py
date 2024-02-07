@@ -8,6 +8,7 @@ from flask import Flask
 from redis import Redis
 import random
 import time
+import requests
 
 app = Flask(__name__)
 redis = Redis(host='redis', port=6379)
@@ -23,6 +24,13 @@ def difficult_function():
     t1 = time.time()
     compute_time = t1 - t0
     return compute_time
+
+
+@app.route()
+def comm_load_manager(compute_time):
+    # pass the comput value to the express endpoint
+    endpoint = '127.0.0.1:3000/request-time'
+    r = requests.post(url=endpoint, json={"time": compute_time})
 
 
 @app.route('/')
