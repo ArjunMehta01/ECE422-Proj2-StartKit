@@ -2,7 +2,7 @@ version: '3'
 
 services:
   web:
-    image: arjunmehta01/test
+    image: arjunmehta01/test:latest
     ports:
       - "8000:8000"
     deploy:
