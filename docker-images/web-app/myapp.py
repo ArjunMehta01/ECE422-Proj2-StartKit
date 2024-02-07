@@ -37,7 +37,7 @@ def comm_load_manager(compute_time):
 def hello():
     count = redis.incr('hits')
     computation_time = difficult_function()
-    return 'Hello There! I have been seen {} times. I have solved the problem in {} seconds.\n'.format(count,
+    return 'HOLA There! I have been seen {} times. I have solved the problem in {} seconds.\n'.format(count,
                                                                                                        computation_time)
 
 
