@@ -21,7 +21,7 @@ services:
           memory: 256M
 
   visualizer:
-    image: arjunmehta01/visualizer
+    image: zhijiewang22/visualizer
     ports:
       - "5000:8080"
     volumes:
