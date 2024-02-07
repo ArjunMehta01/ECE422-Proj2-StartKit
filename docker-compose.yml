@@ -2,7 +2,7 @@ version: '3'
 
 services:
   web:
-    image: zhijiewang22/simpleweb:1
+    image: arjunmehta01/simpleweb:1
     ports:
       - "8000:8000"
     deploy:
@@ -21,7 +21,7 @@ services:
           memory: 256M
 
   visualizer:
-    image: zhijiewang22/visualizer
+    image: arjunmehta01/visualizer
     ports:
       - "5000:8080"
     volumes:
