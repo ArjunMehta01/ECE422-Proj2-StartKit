@@ -26,7 +26,6 @@ def difficult_function():
     return compute_time
 
 
-@app.route()
 def comm_load_manager(compute_time):
     # pass the comput value to the express endpoint
     endpoint = '127.0.0.1:3000/request-time'
