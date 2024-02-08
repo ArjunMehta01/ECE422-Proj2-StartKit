@@ -2,9 +2,10 @@ version: '3'
 
 services:
   web:
-    networks:
-      - host
+    network_mode: "host"
     image: arjunmehta01/simpleweb:latest
+    ports:
+      - "8000:8000"
     deploy:
      resources:
         limits:
@@ -29,8 +30,3 @@ services:
     deploy:
       placement:
         constraints: [node.role == manager]
-        
-networks:
-  host:
-    name: host
-    external: true
