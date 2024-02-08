@@ -28,7 +28,7 @@ def difficult_function():
 
 def comm_load_manager(compute_time):
     # pass the comput value to the express endpoint
-    endpoint = 'https://127.0.0.1:3000/request-time'
+    endpoint = 'https://0.0.0.0:3000/request-time'
     r = requests.post(url=endpoint, json={"time": compute_time})
 
 
