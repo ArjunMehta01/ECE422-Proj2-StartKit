@@ -29,7 +29,8 @@ def difficult_function():
 def comm_load_manager(compute_time):
     # pass the comput value to the express endpoint
     # os.environ['NO_PROXY'] = '127.0.0.1'
-    endpoint = 'http://localhost:3000/request-time'
+    endpoint = 'http://10.2.7.245:3000/request-time'
+    # endpoint = 'http://host.docker.internal:3000/request-time'
     r = requests.post(url=endpoint, json={"time": compute_time})
 
 
