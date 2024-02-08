@@ -32,11 +32,12 @@ class LoadManager {
     if (this.averageTime > 10 && this.serviceCount < 9) {
       console.log('Increasing server instances...');
       this.averageTime = []
+      console.log('docker service scale my_app_web'+(this.serviceCount + 1))
       const { exec } = require('child_process');
-      exec('docker service scale app_name_web='+(this.serviceCount + 1), (err, stdout, stderr) => {
+      exec('docker service scale my_app_web='+(this.serviceCount + 1), (err, stdout, stderr) => {
         if (err) {
           // node couldn't execute the command
-          console.log("code broken like me")
+          console.log(err)
           return;
         }
       
@@ -51,11 +52,12 @@ class LoadManager {
     else if (this.averageTime < 3 && this.requestTimes.length > 10 && this.serviceCount > 1) {
       console.log('Decreasing server instances...');
       this.averageTime = []
+      console.log('docker service scale my_app_web='+(this.serviceCount - 1))
       const { exec } = require('child_process');
-      exec('docker service scale app_name_web='+(this.serviceCount - 1).toString(), (err, stdout, stderr) => {
+      exec('docker service scale my_app_web='+(this.serviceCount - 1).toString(), (err, stdout, stderr) => {
         if (err) {
           // node couldn't execute the command
-          console.log("code broken like me")
+          console.log(err)
           return;
         }
       
@@ -86,7 +88,7 @@ app.use(bodyParser.json());
 
 // Endpoint to receive request times
 app.post('/request-time', (req, res) => {
-
+  console.log(req.headers['x-forwarded-for'] || req.socket.remoteAddress)
   requestTime = req.body.time;
   if (typeof requestTime === 'number') {
     loadManager.receiveRequestTime(requestTime);
