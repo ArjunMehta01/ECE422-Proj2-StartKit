@@ -1,0 +1,37 @@
+pseudocode for auto scaler
+
+request_times = []
+services = 1
+historical_data = {
+    requestTimes,
+    workload,
+    services
+}
+
+app = express_server
+server.listen(3000)
+
+server.post(/request-time, (time) => {
+    request_times.push(time)
+})
+
+function scale() {
+    aveTime = average(request_times)
+    if aveTime > 7s && services <= 8
+        add one more services
+    else if aveTime < 2.5s and services > 1
+        remove one service
+
+    
+    historical_data.push({
+        aveTime,
+        workload = request_times.length,
+        services
+    })
+    request_times.clear()
+
+    save historical data to data.json
+    exec python script to generate charts
+}
+
+run_on_schedule(scale, 30seconds)
